@@ -1,97 +1,137 @@
-# 🐾 Pet Haven – Your Trusted Pet Care Platform
+# 🐾 Pet Haven – Dog Adoption & Sales Platform
 
-**Pet Haven** is a full-stack web application designed to offer a seamless experience for pet lovers. Whether it's browsing, adopting, or managing pet care services, Pet Haven makes the process efficient and delightful. Built with a mobile-first approach and a focus on user experience, it’s perfect for both pet owners and admins managing services.
-
----
-
-## 🚀 Features
-
-- 🐶 Browse available pets with images and details
-- 🛒 Add pets to cart and proceed with a secure checkout
-- 🧑‍⚕️ Book appointments for pet grooming and care
-- 📊 Admin dashboard for managing listings, orders, and revenue
-- 🔐 Login & user management (admin/user separation)
-- 🖼️ Upload pet images and manage inventory
-- 📱 Fully responsive UI with Bootstrap
+A full-stack web application built during my Infosys Springboard internship (Nov 2024 – Jan 2025) for browsing and purchasing dogs, with a separate admin panel for managing listings and sales records.
 
 ---
 
-## 🧠 Tech Stack
+## Features
 
-**Frontend:**
-- HTML5  
-- CSS3  
-- JavaScript  
-- Bootstrap  
+**User side**
+- Browse 10 dog listings across 5 breeds (Labrador, Poodle, Bulldog, Beagle, German Shepherd)
+- View dog details with images
+- Add dogs to cart and complete purchase
+- User registration and login
 
-**Backend:**
-- Python  
-- Flask  
-- SQLAlchemy  
-
-**Database:**
-- SQLite  
-
-**Other Tools:**
-- Git & GitHub  
-- Visual Studio Code  
-- Jinja2 templating  
-- RESTful Routing  
+**Admin side**
+- Role-based access — admin and regular user are separated
+- Add, edit, and remove dog listings
+- Upload dog images
+- View sales records and sale details
 
 ---
 
-## 📂 Project Structure
- ```text
-integrated-pet-haven/
-│
-├── static/ # CSS and images
-├── templates/ # HTML templates (Jinja2)
-├── uploads/ # Uploaded pet images
-├── app.py # Main application
-├── data.py # Data handling logic
-├── test_app.py # Test file
-├── requirements.txt # Dependencies
-└── README.md # You're here!
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | Python, Flask |
+| ORM | SQLAlchemy |
+| Database | SQLite |
+| Frontend | HTML5, CSS3, JavaScript, Bootstrap |
+| Templating | Jinja2 |
+| Testing | pytest (`test_app.py`) |
+| Version Control | Git, GitHub |
+
+---
+
+## Project Structure
+
+```
+Pet/
+├── app.py              # Main Flask app — routes, models, auth logic
+├── data.py             # Seed script using Faker to generate fake sales data
+├── temp.py             # Utility/scratch file
+├── test_app.py         # Unit tests
+├── requirements.txt    # Python dependencies
+├── static/             # CSS, images
+├── templates/          # Jinja2 HTML templates
+├── uploads/            # User-uploaded dog images
+└── migrations/         # Flask-Migrate database migrations
 ```
 
 ---
 
-## 💻 How to Run Locally
+## Database Models
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/sanokaja/Pet-Haven
-   cd Pet-Haven
-2. **Create virtual environment**
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-3. **pip install -r requirements.txt**
-4. **run app.py**
-   python app.py
-   Open your browser and go to http://127.0.0.1:5000
+- **User** — stores registered users with role field (admin / user)
+- **Dog** — stores listing details: breed, price, image, availability
+- **Sale** — records a completed purchase transaction
+- **Sale_detail** — line-item details per sale (breed, dog_id, price)
+- **Booking** — stores booking entries linked to sales
 
 ---
 
-## 👨‍💻 Author
+## How to Run Locally
 
-- **Name:** Sanofar Nasreen
-- **Role:** Frontend & Full Stack Developer
-- **Location:** 📍 Trichy, India
-- **LinkedIn:** [linkedin.com/in/sanofar-nasreen](https://linkedin.com/in/sanofar-nasreen)
-- **GitHub:** [github.com/sanokaja](https://github.com/sanokaja)
+**1. Clone the repository**
+```bash
+git clone https://github.com/sanokaja/Pet
+cd Pet
+```
+
+**2. Create and activate a virtual environment**
+```bash
+python -m venv venv
+source venv/bin/activate        # Mac/Linux
+venv\Scripts\activate           # Windows
+```
+
+**3. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Run the app**
+```bash
+python app.py
+```
+
+Open your browser at `http://127.0.0.1:5000`
+
+**5. (Optional) Seed fake sales data**
+```bash
+python data.py
+```
+
 ---
 
-## 💡 Why This Project Matters
-This project demonstrates:
+## Default Admin Access
 
-Real-world full-stack web development skills
+> Update these credentials in `app.py` before deploying.
 
-Clean architecture using Flask & SQLAlchemy
+| Field | Value |
+|---|---|
+| Username | admin |
+| Password | admin123 |
 
-Responsive and accessible design
+---
 
-Functional admin-user separation
+## Running Tests
 
-Ability to handle both UI and backend development
+```bash
+pytest test_app.py
+```
 
-✅ Ideal for startups, internships, and companies looking for developers who can build practical, user-centered solutions!
+---
+
+## What I Learned
+
+- Building role-based authentication (admin vs user) from scratch using Flask sessions
+- Designing relational database schemas with SQLAlchemy ORM
+- Handling file uploads (dog images) in Flask
+- Writing a data seeder with the Faker library
+- Structuring a Flask project with templates, static files, and migrations
+
+---
+
+## Author
+
+**Sanofar Nasreen**  
+MCA Student · Python Full-Stack Developer  
+[github.com/sanokaja](https://github.com/sanokaja) · [linkedin.com/in/sanofar-nasreen](https://linkedin.com/in/sanofar-nasreen)
+
+---
+
+## Note
+
+This project was built as part of the Infosys Springboard internship program. It is a learning project and not intended for production use.
